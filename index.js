@@ -2,6 +2,8 @@ const express = require('express');
 
 const app = express();
 
+const users = ['Muhammad', 'Shahnewaz', 'Jannatul', 'Maowa', 'Khondokar']
+
 app.get('/', (req, res) => {
     const fruits = {
         product: 'ada',
@@ -13,6 +15,21 @@ app.get('/', (req, res) => {
 
 app.get('/fruits/banana', (req, res) => {
     res.send({fruits: 'banana', quantity: 200, price: 1000})
+})
+
+// app.get('/users/:id', (req, res) => {
+//     // console.log(req.params);
+//     const userId = req.params.id;
+//     const name = users[userId];
+//     res.send(name);
+// })
+
+app.get('/users/:id', (req, res) => {
+    // console.log(req.params);
+    const id = req.params.id;
+    console.log(req.query);
+    const name = users[id];
+    res.send({id, name});
 })
 
 app.listen(3000, () => console.log("Listening to port 3000"))

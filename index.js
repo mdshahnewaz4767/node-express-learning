@@ -1,12 +1,15 @@
 const express = require('express');
 const cors = require('cors');
+var bodyParser = require('body-parser');
 
 const app = express();
 
-app.use(cors());
+app.use(cors())
+app.use(bodyParser.json())
 
 const users = ['Muhammad', 'Shahnewaz', 'Jannatul', 'Maowa', 'Khondokar']
 
+//Get
 app.get('/', (req, res) => {
     const fruits = {
         product: 'ada',
@@ -33,6 +36,12 @@ app.get('/users/:id', (req, res) => {
     console.log(req.query);
     const name = users[id];
     res.send({id, name});
+})
+
+//Post
+app.post('/addUser', (req, res) => {
+    // console.log('Post request send');
+    console.log(req.body);
 })
 
 app.listen(3000, () => console.log("Listening to port 3000"))

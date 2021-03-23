@@ -41,7 +41,10 @@ app.get('/users/:id', (req, res) => {
 //Post
 app.post('/addUser', (req, res) => {
     // console.log('Post request send');
-    console.log(req.body);
+    console.log('Data received' ,req.body);
+    const user = req.body;
+    user.id = 55;
+    res.send(user);
 })
 
 app.listen(3000, () => console.log("Listening to port 3000"))
